@@ -1,33 +1,30 @@
 import { useEffect, useRef, useState } from "react";
 import "./IndiaMap.css";
-import { STATE_INFO } from "../state-data";
+import states from "./state-data";
 
 export default function IndiaMap() {
   const containerRef = useRef(null);
   const [tooltip, setTooltip] = useState({ show: false, x: 0, y: 0, text: "" });
 
   useEffect(() => {
-    // Load the SVG into the container
     fetch("/india-states.svg")
       .then((r) => r.text())
       .then((svgText) => {
         if (!containerRef.current) return;
         containerRef.current.innerHTML = svgText;
 
-        // Select all states: prefer data-state, fallback to id
         const svgRoot = containerRef.current.querySelector("svg");
         if (!svgRoot) return;
 
-        // Make the SVG responsive
+        // Responsive SVG
         svgRoot.setAttribute("class", "india-map");
         svgRoot.removeAttribute("width");
         svgRoot.removeAttribute("height");
         if (!svgRoot.getAttribute("viewBox")) {
-          // fallback if the SVG lacks viewBox (adjust to your SVG)
-          svgRoot.setAttribute("viewBox", "0 0 1000 1000");
+          svgRoot.setAttribute("viewBox", "0 0 1000 1000"); // fallback
         }
 
-        // Collect clickable regions
+        // Clickable states
         const clickable = svgRoot.querySelectorAll("[data-state], [id]");
         clickable.forEach((el) => {
           const stateName =
@@ -36,12 +33,11 @@ export default function IndiaMap() {
 
           if (!stateName) return;
 
-          // Style class for hover/active
           el.classList.add("state-region");
 
-          // Hover
+          // Hover tooltip
           el.addEventListener("mousemove", (e) => {
-            const info = STATE_INFO[stateName];
+            const info = states[stateName];
             setTooltip({
               show: true,
               x: e.clientX,
@@ -49,18 +45,18 @@ export default function IndiaMap() {
               text: info ? `${stateName} • ${info.tagline}` : stateName,
             });
           });
+
           el.addEventListener("mouseleave", () =>
             setTooltip((t) => ({ ...t, show: false }))
           );
 
-          // Click
+          // Click event
           el.addEventListener("click", () => {
-            const info = STATE_INFO[stateName];
+            const info = states[stateName];
             if (info?.onClick) {
               info.onClick(stateName, info);
               return;
             }
-            // Default: simple detail alert
             alert(
               info
                 ? `${stateName}\nTop spots: ${info.topSpots.join(", ")}\nStarting ₹${info.startingFrom}`
@@ -68,9 +64,9 @@ export default function IndiaMap() {
             );
           });
 
-          // Optional: initial data-driven fill
-          if (STATE_INFO[stateName]?.color) {
-            el.setAttribute("fill", STATE_INFO[stateName].color);
+          // Predefined color
+          if (states[stateName]?.color) {
+            el.setAttribute("fill", states[stateName].color);
           }
         });
       })
@@ -106,13 +102,12 @@ export default function IndiaMap() {
   );
 }
 
-// Turn ids like "IN-MH" or "maharashtra" into "Maharashtra"
+// Convert IDs like "IN-MH" → "Maharashtra"
 function normalizeIdToState(id) {
   if (!id) return null;
   let s = id.replace(/^IN[-_]/i, "").replace(/[-_]/g, " ");
   s = s.trim();
   if (!s) return null;
-  // Capitalize every word
   return s
     .split(" ")
     .map((w) => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase())

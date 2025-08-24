@@ -1,0 +1,100 @@
+/* Page layout */
+.map-page {
+  padding: 2rem;
+  text-align: center;
+}
+
+.map-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+/* Card styles */
+.card {
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin: 1rem auto;
+  padding: 1rem;
+  max-width: 1200px;
+}
+
+/* Map container */
+.map-container {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.india-map {
+  width: 100%;
+  height: auto;
+}
+
+/* State styles */
+.state-region {
+  cursor: pointer;
+  transition: fill 0.3s, stroke 0.2s;
+  stroke: #444;
+  stroke-width: 0.5;
+}
+
+.state-region:hover {
+  fill: #ff9800 !important;
+  stroke: #222;
+  stroke-width: 1;
+}
+
+/* Tooltip */
+.map-tooltip {
+  position: fixed;
+  background: rgba(0, 0, 0, 0.85);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  pointer-events: none;
+  z-index: 1000;
+  white-space: nowrap;
+}
+
+/* Toolbar / legend */
+.map-toolbar {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.legend {
+  display: flex;
+  gap: 1.2rem;
+  align-items: center;
+  font-size: 0.9rem;
+}
+
+.legend-item {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  margin-right: 6px;
+  border-radius: 4px;
+}
+
+.legend-nature {
+  background: #4caf50;
+}
+
+.legend-heritage {
+  background: #795548;
+}
+
+.legend-beach {
+  background: #03a9f4;
+}
+
+.legend-adventure {
+  background: #ff5722;
+}
