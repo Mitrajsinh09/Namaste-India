@@ -84,12 +84,12 @@
 
 import React, { useState, useEffect } from "react";
 import "./Home.css";
-import aboutImg from "../assets/about-banner.jpg";
+import aboutImg from "../assets/Goa/about-banner.jpg";
 
-import gir from "../assets/gir.jpg";
-import kerala from "../assets/kerala.jpg";
-import goa from "../assets/goa.jpg";
-import jaipur from "../assets/jaipur.jpg";
+import gir from "../assets/Gujarat/gir.jpg";
+import kerala from "../assets/Gujarat/kerala.jpg";
+import goa from "../assets/Gujarat/goa.jpg";
+import jaipur from "../assets/Goa/jaipur.jpg";
 
 function Home() {
   const images = [kerala, jaipur, goa, gir];

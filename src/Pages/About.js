@@ -1,6 +1,6 @@
 import React from "react";
 import "./About.css";
-import aboutImg from "../assets/about-banner.jpg"; // Place image in src/assets
+import aboutImg from "../assets/Goa/about-banner.jpg"; // Place image in src/assets
 
 function About() {
   return (
