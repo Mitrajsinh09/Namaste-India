@@ -1,88 +1,89 @@
-.map-container {
-  width: 100%;
-  max-width: 1200px;
-  margin: auto;
-  padding: 20px;
-  background: #f9fafc;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-}
+/* ==============================
+   IndiaMap.css - Clean Modern UI
+   ============================== */
 
-.india-map {
-  width: 100%;
-  height: auto;
-  border-radius: 12px;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-}
-
-.state-label {
-  font-size: 10px;
-  font-weight: 700;
-  fill: #222;
-  paint-order: stroke;
-  stroke: #fff;
-  stroke-width: 3px;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.3));
-  user-select: none;
-  pointer-events: none;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-}
-
-/* Travel Info Card */
-.travel-card {
-  position: absolute;
-  right: 30px;
-  top: 50px;
-  width: 280px;
-  background: white;
-  border-radius: 16px;
-  padding: 20px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-  animation: slideIn 0.3s ease-out;
-}
-
-.travel-card h3 {
-  margin-bottom: 12px;
-  font-size: 20px;
-  color: #333;
-}
-
-.travel-card ul {
-  padding-left: 18px;
-  margin-bottom: 15px;
-}
-
-.travel-card li {
-  margin: 6px 0;
-  font-size: 14px;
-  color: #555;
-}
-
-.travel-card button {
-  background: #ff7f50;
-  border: none;
-  padding: 8px 14px;
-  color: white;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.travel-card button:hover {
-  background: #ff5722;
-}
-
-@keyframes slideIn {
-  from {
-    transform: translateX(100px);
-    opacity: 0;
+   .map-container {
+    position: relative;
+    width: 100%;
+    height: 90vh; /* keeps header space safe */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f9fafb; /* subtle gray background */
+    overflow: hidden;
   }
-  to {
-    transform: translateX(0);
-    opacity: 1;
+  
+  /* Map SVG */
+  .india-map {
+    width: 100%;
+    height: 100%;
   }
-}
+  
+  /* State Labels */
+  .state-label {
+    font-size: 12px;
+    font-weight: 600;
+    fill: #111827; /* dark gray text */
+    pointer-events: none;
+    user-select: none;
+    paint-order: stroke;
+    stroke: #fff;
+    stroke-width: 2px;
+  }
+  
+  /* ==============================
+     Zoom Controls
+     ============================== */
+  .zoom-controls {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    z-index: 10;
+  }
+  
+  .zoom-controls button {
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 8px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    background: #2563eb; /* blue */
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: all 0.25s ease;
+  }
+  
+  .zoom-controls button:hover {
+    background: #1d4ed8; /* darker blue */
+    transform: translateY(-2px);
+  }
+  
+  .zoom-controls button:active {
+    background: #1e40af; /* pressed state */
+    transform: translateY(0);
+  }
+  
+  /* ==============================
+     Responsiveness
+     ============================== */
+  @media (max-width: 768px) {
+    .map-container {
+      height: 75vh;
+    }
+  
+    .zoom-controls button {
+      width: 34px;
+      height: 34px;
+      font-size: 16px;
+    }
+  
+    .state-label {
+      font-size: 10px;
+    }
+  }
+  

@@ -3,8 +3,8 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Home from "./Pages/Home";
 import StatePage from "./Pages/StatePage";
-import Header from "./Components/Header";
-import Footer from "./Components/Footer";
+import Header from "./Pages/Header";
+import Footer from "./Pages/Footer";
 import About from "./Pages/About";
 import IndiaMap from "./Pages/IndiaMap";
 

@@ -150,4 +150,3 @@ const IndiaMap = () => {
 };
 
 export default IndiaMap;
-

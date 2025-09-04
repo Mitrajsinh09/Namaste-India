@@ -1,0 +1,125 @@
+/* ===========================
+   HEADER BASE (Smaller + Clean)
+=========================== */
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 10px 6%;   /* reduced padding for smaller header */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+  transition: all 0.3s ease;
+  z-index: 1000;
+  box-sizing: border-box;
+}
+
+.header.scrolled {
+  background: #f9fafb;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+/* ===========================
+   LOGO
+=========================== */
+.logo {
+  font-size: 1.25rem; /* smaller logo */
+  font-weight: 700;
+  color: #111827;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+/* ===========================
+   NAVIGATION
+=========================== */
+.nav {
+  display: flex;
+  gap: 22px; /* reduced spacing */
+  flex-wrap: wrap;
+}
+
+.nav-item {
+  position: relative;
+  padding: 6px 12px;  /* smaller buttons */
+  border-radius: 6px;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 0.95rem; /* slightly smaller text */
+  font-weight: 500;
+  cursor: pointer;
+  color: #374151;
+  transition: all 0.25s ease;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.nav-item:hover {
+  color: #2563eb;
+  background: #f3f4f6;
+  transform: translateY(-2px);
+}
+
+.nav-item.active {
+  color: #2563eb;
+  background: #e0e7ff;
+  font-weight: 600;
+}
+
+/* ===========================
+   HAMBURGER (Mobile)
+=========================== */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 4px;
+}
+
+.bar {
+  height: 2.5px;  /* thinner bars */
+  width: 22px;
+  background-color: #111827;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+.hamburger.active .bar:nth-child(1) {
+  transform: rotate(45deg) translate(4px, 4px);
+}
+.hamburger.active .bar:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.active .bar:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* ===========================
+   RESPONSIVE MENU
+=========================== */
+@media (max-width: 768px) {
+  .nav {
+    position: absolute;
+    top: 55px;  /* smaller header so menu aligns well */
+    right: 0;
+    background: #ffffff;
+    flex-direction: column;
+    gap: 14px;
+    padding: 16px;
+    display: none;
+    width: 100%;
+    border-top: 1px solid #e5e7eb;
+    box-sizing: border-box;
+  }
+
+  .nav.open {
+    display: flex;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+}
